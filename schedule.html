@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang = "en">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+
+*{
+box-sizing: border-box;
+}
+.home{
+background-color: #ff5733;
+}
+
+.home:hover{
+background-color: #dddddd;
+}
+.hwButton {
+background-color: #a4c2f4ff;
+}
+
+.hwButton:hover{
+background-color: #3c78d8ff;
+}
+
+.classButton {
+background-color: #f9cb9cff;
+}
+
+.classButton:hover{
+background-color: #e69138ff;
+}
+
+.busButton {
+background-color: #ffe599ff;
+}
+
+.busButton:hover{
+background-color: #f1c232ff;
+}
+
+.hw {
+background-color: #a4c2f4ff;
+}
+
+.class {
+background-color: #f9cb9cff;
+}
+
+.bus {
+background-color: #ffe599ff;
+}
+
+
+
+[class*="col-"] {
+  float: left;
+  padding: 15px;
+}
+
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 25%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}
+
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.row2::after {
+  content: "";
+  clear: both;
+  display: table;
+background-color: #ffffff;
+}
+
+.row2:hover{
+background-color: #eeeeee;
+}
+
+</style>
+
+<head>
+<title>RIT GO Scheduler</title>
+</head>
+<body>
+<h1 style="font-size=60px">Schedule</h1>
+
+<a href = "index.html">
+<div class="row"><div class="home col-2" style="color:black">Return to homescreen</div></div></a><br>
+
+<div class="row">
+<a href = "hwOnly.html">
+	<div class="hwButton col-4">
+		<center>
+		<p title="Show just Homework" style="color:black" >Homework</p>
+		</center>
+	</div>
+</a>
+<a href = "classOnly.html">
+	<div class="classButton col-4">
+		<center>
+		<p title="Show just Classes" style="color:black" >Classes</p>
+		</center>
+	</div>
+	</a>
+	<a href = "busView.html">
+	<div class="busButton col-4">
+		<center>
+		<p title="Show just Bus Times" style="color:black" >Bus Times</p>
+		</center>
+	</div>
+	</a>
+</div>
+
+<div>
+<center>
+<p>Today is <span id="date"></span></p><script>
+    var fullDate = new Date();
+    var day = fullDate.getDate();
+    var year = fullDate.getFullYear();
+    var month = fullDate.getMonth();
+    var monthNames = ["January", "February","March", "April", "May", "June", "July", "August", "September", "October", "November","December"];
+    var monthName = monthNames[month];
+    document.getElementById("date").innerHTML= monthName+" "+day+", "+year;
+</script>
+</center>
+</div>
+
+<hr>
+
+
+
+<div>
+
+<div>
+<right>
+<div class="row2"> <p class="col-1">12 am</p></div>
+<div class="row2"> <p class="col-1">01 am</p></div>
+<div class="row2"> <p class="col-1">02 am</p></div>
+<div class="row2"> <p class="col-1">03 am</p></div>
+<div class="row2"> <p class="col-1">04 am</p></div>
+<div class="row2"> <p class="col-1">05 am</p></div>
+<div class="row2"> <p class="col-1">06 am</p></div>
+<div class="row2"> <p class="col-1">07 am</p></div>
+<div class="row2"> <p class="col-1">08 am</p></div>
+<div class="row2"> <p class="col-1">09 am</p><p class="class col-3">Applied Statistics</p></div>
+<div class="row2"> <p class="col-1">10 am</p></div>
+<div class="row2"> <p class="col-1">11 am</p><p class="class col-3">History of the World from 1500</p></div>
+<div class="row2"> <p class="col-1">12 pm</p><p class="class col-3">Computer Science</p><p class="hw col-3">Comp. Sci. lab 4</p></div>
+<div class="row2"> <p class="col-1">01 pm</p></div>
+<div class="row2"> <p class="col-1">02 pm</p></div>
+<div class="row2"> <p class="col-1">03 pm</p></div>
+<div class="row2"> <p class="col-1">04 pm</p></div>
+<div class="row2"> <p class="col-1">05 pm</p></div>
+<div class="row2"> <p class="col-1">06 pm</p></div>
+<div class="row2"> <p class="col-1">07 pm</p></div>
+<div class="row2"> <p class="col-1">08 pm</p></div>
+<div class="row2"> <p class="col-1">09 pm</p><p class="hw col-3">History Reflection 3</p></div>
+<div class="row2"> <p class="col-1">10 pm</p></div>
+<div class="row2"> <p class="col-1">11 pm</p><p class="hw col-3">Applied Statistics Homework 5</p></div>
+</right>
+
+</div>
+
+</div>
+
+
+</body>
+</html>

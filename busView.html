@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang = "en">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+
+*{
+box-sizing: border-box;
+}
+
+.home{
+background-color: #ff5733;
+}
+
+.home:hover{
+background-color: #dddddd;
+}
+
+.hwButton {
+background-color: #a4c2f4ff;
+}
+
+.hwButton:hover{
+background-color: #3c78d8ff;
+}
+
+.classButton {
+background-color: #f9cb9cff;
+}
+
+.classButton:hover{
+background-color: #e69138ff;
+}
+
+.busButton {
+background-color: #f1c232ff;
+}
+
+.busButton:hover{
+background-color: #ffe599ff;
+}
+
+.hw {
+background-color: #a4c2f4ff;
+}
+
+.class {
+background-color: #f9cb9cff;
+}
+
+.bus {
+background-color: #ffe599ff;
+}
+
+
+
+[class*="col-"] {
+  float: left;
+  padding: 15px;
+}
+
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 25%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}
+
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.row2::after {
+  content: "";
+  clear: both;
+  display: table;
+background-color: #ffffff;
+}
+
+.row2:hover{
+background-color: #eeeeee;
+}
+
+</style>
+
+
+
+<script>
+var times = ["07:00 am","07:30 am","08:00 am","08:30 am","09:00 am","09:30 am","10:00 am","10:30 am","11:00 am","11:30 am","12:00 pm","12:30 pm","01:00 pm","01:30 pm","02:00 pm","02:30 pm","03:00 pm","03:30 pm","04:00 pm","04:30 pm","05:00 pm","05:30 pm","06:00 pm","06:30 pm","07:00 pm","07:30 pm","08:00 pm","08:30 pm","09:00 pm","09:30 pm","10:00 pm","10:30 pm","11:00 pm"]
+var routeObject = {
+  "RIT Inn": {
+    "RIT Inn": times,
+    "UC West": times,
+	"S Lot": times,
+	"Global Village": times,
+    "F Lot Loop": times
+  },
+  "Combined Campus": {
+    "Perkins Green": times,
+    "Park Point North": times,
+	"Barnes & Noble": times,
+	"The Province": times,
+    "Perkins Road": times,
+	"Residence Halls": times,
+	"S Lot": times,
+    "Global Village": times,
+	"F Lot Loop": times
+  },
+  "Weekend Retail": {
+    "S Lot": times,
+    "Global Village": times,
+	"F Lot Loop": times,
+	"South Town Plaza": times,
+    "Market Place Mall": times,
+	"Wegmans West": times,
+	"Target": times,
+    "Wal-Mart West": times,
+	"Wal-Mart East": times,
+	"Wegmans East": times,
+    "Jefferson Plaza": times
+  }
+}
+
+var currentSelectedTime;
+
+window.onload = function() {
+  var routeSel = document.getElementById("route");
+  var stopSel = document.getElementById("stop");
+  var timeSel = document.getElementById("time");
+  for (var x in routeObject) {
+    routeSel.options[routeSel.options.length] = new Option(x, x);
+  }
+  routeSel.onchange = function() {
+    //display correct values
+	var count = 1;
+    for (var y in routeObject[this.value]) {
+      stopSel.options[count] = new Option(y, y);
+	  count++;
+    }
+  }
+  stopSel.onchange = function() {
+    //display correct values
+    var z = routeObject[routeSel.value][this.value];
+	var count = 1;
+    for (var i = 0; i < z.length; i++) {
+      timeSel.options[count] = new Option(z[i], z[i]);
+	  count++;
+    }
+  }
+  
+  timeSel.onchange = function(){
+	currentSelectedTime = timeSel.value;
+  }
+  
+}
+
+function findTime(){
+	if(!currentSelectedTime){
+	document.getElementById("timeStamp").innerHTML = "Please select an option from all three drop boxes";
+	} else{
+	var temp = currentSelectedTime.substring(0,3);
+	if(String(currentSelectedTime.substring(3,4))===("3")){
+	temp += "40 " + currentSelectedTime.substring(5,8);
+	} else{
+	temp += "10 " + currentSelectedTime.substring(5,8);
+	}
+	var day = new Date();
+	
+	document.getElementById("timeStamp").innerHTML = "The next bus to arrive after that time arrives at "+temp;
+}
+}
+</script>
+
+
+
+<head>
+<title>RIT GO Scheduler</title>
+</head>
+<body>
+<h1 style="font-size=60px">Schedule</h1>
+<a href = "index.html">
+<div class="row"><div class="home col-2" style="color:black">Return to homescreen</div></div></a><br>
+
+<div class="row">
+<a href = "hwOnly.html">
+	<div class="hwButton col-4">
+		<center>
+		<p title="Show just Homework" style="color:black" >Homework</p>
+		</center>
+	</div>
+</a>
+<a href = "classOnly.html">
+	<div class="classButton col-4">
+		<center>
+		<p title="Show just Classes" style="color:black" >Classes</p>
+		</center>
+	</div>
+	</a>
+	<a href = "schedule.html">
+	<div class="busButton col-4">
+		<center>
+		<p title="Show just Bus Times" style="color:black" >Bus Times</p>
+		</center>
+	</div>
+	</a>
+</div>
+
+<div>
+<center>
+<p>Today is <span id="date"></span></p><script>
+    var fullDate = new Date();
+    var day = fullDate.getDate();
+    var year = fullDate.getFullYear();
+    var month = fullDate.getMonth();
+    var monthNames = ["January", "February","March", "April", "May", "June", "July", "August", "September", "October", "November","December"];
+    var monthName = monthNames[month];
+    document.getElementById("date").innerHTML= monthName+" "+day+", "+year;
+</script>
+</center>
+</div>
+
+<hr>
+
+
+
+<div>
+
+<form name="form1" id="form1" action="/action_page.php">
+Bus Routes: <select name="route" id="route">
+    <option value="" selected="selected">Select a Route</option>
+  </select>
+  <br><br>
+Stops on Route: <select name="stop" id="stop">
+    <option value="" selected="selected">Select the stop you are at</option>
+  </select>
+  <br><br>
+Time you would like to leave: <select name="time" id="time">
+    <option value="" selected="selected">Around what time do you want to leave</option>
+  </select>
+  <br><br>
+</form>
+<button onclick="findTime()">Find Next Bus</button>
+<br><br>
+
+</div>
+<div id="timeStamp">Fill out the info to see the next available bus</div> 
+
+</body>
+</html>
